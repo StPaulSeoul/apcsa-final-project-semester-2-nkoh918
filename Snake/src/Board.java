@@ -1,17 +1,34 @@
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
 
-public class Board 
+import javax.swing.JPanel;
+
+public class Board extends JPanel 
 {
-	//temp
-	int pixelsize = 0;
-	int pixeltotal = 0;
+	public final static int width = 500;
+	public final static int height = 400;
+	public final static int pixelsize = 10;
 	
-	public int getpixeltotal()
-	{
-		return pixeltotal;
+	public Snake snake = new Snake();
+	public Food food = new Food();
+	
+	public boolean gamerunning = true;
+	
+	public Board(){
+		
+		setPreferredSize(new Dimension(width,height));
+		setBackground(Color.white);
 	}
 	
-	public int getpixelsize()
+	void draw(Graphics graphics)
 	{
-		return pixelsize;
+		if(gamerunning)
+		{
+			graphics.setColor(Color.red);
+			graphics.fillRoundRect(food.getx(), food.gety(), pixelsize, pixelsize, 2, 2);
+			
+		}
 	}
+	
 }
